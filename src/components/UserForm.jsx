@@ -1,3 +1,5 @@
+// In UserForm.js
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/UserForm.css';
@@ -15,13 +17,6 @@ const UserForm = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        document.body.classList.add('userFormBody');
-        return () => {
-            document.body.classList.remove('userFormBody');
-        };
-    }, []);
-
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         setFormData((prevFormData) => ({
@@ -29,10 +24,15 @@ const UserForm = () => {
             [name]: files ? files[0] : value,
         }));
     };
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/add-task', { state: { userName: `${formData.firstName} ${formData.lastName}` } });
+        navigate('/add-task', {
+            state: {
+                firstName: formData.firstName,
+                lastName: formData.lastName
+            }
+        });
     };
 
     useEffect(() => {
@@ -104,6 +104,7 @@ const UserForm = () => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+
         </div>
     );
 };
