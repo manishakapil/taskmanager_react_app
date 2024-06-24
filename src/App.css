@@ -38,6 +38,11 @@ header .logo img{
   cursor: pointer;
 }
 
+.welcome_msg{
+  font-style: italic;
+    font-weight: 400;
+}
+
 header .logo span{
   font-size: 22px;
   margin-left: 7px;
