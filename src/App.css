@@ -20,6 +20,14 @@ header{
   box-shadow: var(--box-shadow);
 }
 
+.addTask form input{
+  flex-grow: 1;
+  padding: 5px 5px;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
 header .logo{
   display: flex;
   align-items: center;
