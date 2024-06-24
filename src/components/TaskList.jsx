@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-// import './App.css';
 import AddTask from './AddTask';
 import ShowTask from './ShowTask';
 import Header from './Header';
 import '../App.css'
+import { useLocation } from 'react-router-dom';
 
 
-
-function TaskList() {
+function TaskList(props) {
+  const location = useLocation();
+  const { firstName, lastName } = location.state;
   const [task, setTask] = useState("");
   const [tasklist, setTasklist] = useState(JSON.parse(localStorage.getItem('tasklist')) || []);
   const [editid, setEditid] = useState(0);
@@ -57,6 +58,7 @@ function TaskList() {
         <Header setTheme={setTheme} theme={theme}>
           TASK MANAGER
         </Header>
+        <h2 className='welcome_msg' >Welcome {firstName} {lastName} to your task manager.</h2>
         <AddTask handleSubmit={handleSubmit} editid={editid} task={task} setTask={setTask}/>
         <ShowTask tasklist={tasklist} setTasklist={setTasklist} handleEdit={handleEdit} handleDelete={handleDelete}/>
       </div>
